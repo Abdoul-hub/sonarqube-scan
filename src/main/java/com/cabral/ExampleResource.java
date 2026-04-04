@@ -13,4 +13,15 @@ public class ExampleResource {
     public String hello() {
         return "Hello from Quarkus REST";
     }
+
+
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public String geRessouces() {
+
+        int a=0, b=0, c;
+        c= a/b;
+        return "Hello from Quarkus REST"+ c;
+
+    }
 }
