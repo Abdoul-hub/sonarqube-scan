@@ -1,7 +1,7 @@
 https://www.digitalocean.com/community/tutorials/install-maven-linux-ubuntu
 
 
-  mvn clean verify sonar:sonar \
+ mvn clean verify sonar:sonar \
   -Dsonar.projectKey=sonarqube-scan \
   -Dsonar.host.url=http://localhost:9001 \
   -Dsonar.login=sqp_8da49cdc2444416936da88ec1282853155ad194a \

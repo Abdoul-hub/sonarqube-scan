@@ -11,17 +11,13 @@ public class ExampleResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
+
+        String hello = "Hello World!";
+        String hello2 = "Hello World!";
+
         return "Hello from Quarkus REST";
     }
 
 
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String geRessouces() {
 
-        int a=0, b=0, c;
-        c= a/b;
-        return "Hello from Quarkus REST"+ c;
-
-    }
 }
