@@ -10,7 +10,10 @@ https://www.digitalocean.com/community/tutorials/install-maven-linux-ubuntu
 
 
 ######################
-docker-compose.yml
+creer un dossier dependencytrack
+mkdir dependency-track
+cd dependency-track
+vi docker-compose.yml
 #####################################################
 # This Docker Compose file contains two services
 #    Dependency-Track API Server
@@ -49,7 +52,10 @@ services:
 
 
 ##########
+Lancer cette commande
 docker compose up -d
 
+
+Partir sur ce lien
 http://localhost:8080
 admin/admin
