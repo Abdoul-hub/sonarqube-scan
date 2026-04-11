@@ -26,6 +26,10 @@ volumes:
 services:
   dtrack-apiserver:
     image: dependencytrack/apiserver
+    environment:
+     - ALPINE_HTTP_TIMEOUT_CONNECTION=60
+     - ALPINE_HTTP_TIMEOUT_SOCKET=60
+     - ALPINE_HTTP_TIMEOUT_POOL=60
     deploy:
       resources:
         limits:
