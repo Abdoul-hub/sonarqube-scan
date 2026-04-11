@@ -6,3 +6,50 @@ https://www.digitalocean.com/community/tutorials/install-maven-linux-ubuntu
   -Dsonar.host.url=http://localhost:9001 \
   -Dsonar.login=sqp_8da49cdc2444416936da88ec1282853155ad194a \
   -Dfile=shared.jar
+
+
+
+######################
+docker-compose.yml
+#####################################################
+# This Docker Compose file contains two services
+#    Dependency-Track API Server
+#    Dependency-Track FrontEnd
+#####################################################
+
+volumes:
+  dependency-track:
+
+services:
+  dtrack-apiserver:
+    image: dependencytrack/apiserver
+    deploy:
+      resources:
+        limits:
+          memory: 12288m
+        reservations:
+          memory: 8192m
+      restart_policy:
+        condition: on-failure
+    ports:
+      - '8081:8080'
+    volumes:
+    restart: unless-stopped
+
+  dtrack-frontend:
+    image: dependencytrack/frontend
+    depends_on:
+      - dtrack-apiserver
+    environment:
+      - API_BASE_URL=http://localhost:8081
+
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+
+##########
+docker compose up -d
+
+http://localhost:8080
+admin/admin
