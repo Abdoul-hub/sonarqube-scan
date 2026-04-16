@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  gitlab:
+    image: gitlab/gitlab-ee:18.11.0-ee.0
+    container_name: gitlab
+    restart: always
+    hostname: 'private-gitlab.com'
+    shm_size: '256m'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://private-gitlab.com'
+    ports:
+      - '80:80'
+    volumes:
+      - gitlab-conf:/etc/gitlab
+      - gitlab-logs:/var/log/gitlab
+      - gitlab-data:/var/opt/gitlab
+
+volumes:
+  gitlab-data:
+  gitlab-conf:
+  gitlab-logs:

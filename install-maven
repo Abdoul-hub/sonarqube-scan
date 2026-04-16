@@ -64,3 +64,37 @@ docker compose up -d
 Partir sur ce lien
 http://localhost:8080
 admin/admin
+
+
+###########################
+
+dans votre /etc/hosts
+VOTRE_IP private-gitlab.com
+
+mkdir private-gitlab
+vi docker-compose.yml
+########
+services:
+  gitlab:
+    image: gitlab/gitlab-ee:18.11.0-ee.0
+    container_name: gitlab
+    restart: always
+    hostname: 'private-gitlab.com'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        # Add any other gitlab.rb configuration here, each on its own line
+        external_url 'https://private-gitlab.com'
+    ports:
+      - '80:80'
+      - '443:443'
+      - '22:22'
+    volumes:
+      - 'gitlab-conf:/etc/gitlab'
+      - 'gitlab-logs/logs:/var/log/gitlab'
+      - 'gitlab-data:/var/opt/gitlab'
+    shm_size: '256m'
+
+  volumes:
+    gitlab-data:
+    gitlab-conf:
+    gitlab-logs
